@@ -3,53 +3,66 @@
 import { useState } from "react";
 import Tag from "@/components/Tag";
 
+
+type FormErrors = {
+  name?: string;
+  email?: string;
+  phone?: string;
+  message?: string;
+  preferredTime?: string;
+  agree?: string;
+};
+
 export default function Footer() {
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-        preferredTime: "",
-        agree: false,
-    });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+    preferredTime: "",
+    agree: false,
+  });
 
-    const [errors, setErrors] = useState({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-        preferredTime: "",
-        agree: "",
-    });
+  //   FormErrors
+  const [errors, setErrors] = useState<FormErrors>({});
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value, type } = e.target;
-        const val = type === "checkbox" ? (e.target as HTMLInputElement).checked : value;
-        setFormData({ ...formData, [name]: val });
-    };
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value, type } = e.target;
+    const val = type === "checkbox" ? (e.target as HTMLInputElement).checked : value;
+    setFormData({ ...formData, [name]: val });
+  };
 
-    const validate = () => {
-        const newErrors: any = {};
-        if (!formData.name) newErrors.name = "Name is required.";
-        if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) newErrors.email = "Valid email is required.";
-        if (!formData.phone.trim()) {
-  newErrors.phone = "Phone number is required.";
-} else if (!/^\+?[0-9]{7,15}$/.test(formData.phone)) {
-  newErrors.phone = "Enter a valid phone number.";
-}
-        if (!formData.message) newErrors.message = "Please tell us what brings you here.";
-        if (!formData.preferredTime) newErrors.preferredTime = "Preferred time is required.";
-        if (!formData.agree) newErrors.agree = "You must agree to be contacted.";
-        setErrors(newErrors);
-        return Object.keys(newErrors).length === 0;
-    };
+  const validate = () => {
+    const newErrors: FormErrors = {};
 
-    const handleSubmit = (e: React.FormEvent) => {
-        e.preventDefault();
-        if (validate()) {
-            alert("Form submitted successfully!");
-        }
-    };
+    if (!formData.name) newErrors.name = "Name is required.";
+    if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
+      newErrors.email = "Valid email is required.";
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Phone number is required.";
+    } else if (!/^\+?[0-9]{7,15}$/.test(formData.phone)) {
+      newErrors.phone = "Enter a valid phone number.";
+    }
+    if (!formData.message) newErrors.message = "Please tell us what brings you here.";
+    if (!formData.preferredTime)
+      newErrors.preferredTime = "Preferred time is required.";
+    if (!formData.agree) newErrors.agree = "You must agree to be contacted.";
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (validate()) {
+      alert("Form submitted successfully!");
+    }
+  };
+
+
+
 
     return (
         <section
