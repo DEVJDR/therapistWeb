@@ -54,12 +54,29 @@ export default function Footer() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (validate()) {
-      alert("Form submitted successfully!");
-    }
-  };
+const handleSubmit = (e: React.FormEvent) => {
+  e.preventDefault();
+  if (validate()) {
+    alert("Form submitted successfully!");
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+      preferredTime: "",
+      agree: false,
+    });
+    setErrors({
+      name: "",
+      email: "",
+      phone: "",
+      message: "",
+      preferredTime: "",
+      agree: "",
+    });
+  }
+};
+
 
 
 
