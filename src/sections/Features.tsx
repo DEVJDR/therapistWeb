@@ -77,8 +77,8 @@ export default function Features() {
                             >
                                 <div className="relative h-60 w-full overflow-hidden rounded-lg">
                                     <Image
-                                        src="/images/relationship.jpg"
-                                        alt="Relationship Counseling"
+                                        src="/images/traumaa.jpg"
+                                        alt="Trauma Recovery"
                                         fill
                                         className="object-cover rounded-lg"
                                     />
@@ -100,7 +100,7 @@ export default function Features() {
                             >
                                 <div className="relative h-60 w-full overflow-hidden rounded-lg">
                                     <Image
-                                        src="/images/traumaa.jpg"
+                                        src="/images/trauma.webp"
                                         alt="Trauma Recovery"
                                         fill
                                         className="object-cover rounded-lg"
