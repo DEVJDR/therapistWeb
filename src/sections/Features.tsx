@@ -4,6 +4,10 @@ import FeatureCard from "@/components/FeatureCard";
 import Tag from "@/components/Tag";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import traumaImage from "@/assets/images/trauma.webp";
+import counImage from "@/assets/images/coun.jpg";
+import anxiety from "@/assets/images/traumaa.jpg";
+
 
 const parentVariants = {
     hidden: { opacity: 1 },
@@ -55,7 +59,7 @@ export default function Features() {
                             >
                                 <div className="relative h-60 w-full overflow-hidden rounded-lg">
                                     <Image
-                                        src="/images/trauma.webp"
+                                       src={anxiety}
                                         alt="Anxiety Therapy"
                                         fill
                                         className="object-cover rounded-lg"
@@ -77,8 +81,8 @@ export default function Features() {
                             >
                                 <div className="relative h-60 w-full overflow-hidden rounded-lg">
                                     <Image
-                                        src="/images/traumaa.jpg"
-                                        alt="Trauma Recovery"
+                                        src={counImage}
+                                        alt="relationship"
                                         fill
                                         className="object-cover rounded-lg"
                                     />
@@ -100,7 +104,7 @@ export default function Features() {
                             >
                                 <div className="relative h-60 w-full overflow-hidden rounded-lg">
                                     <Image
-                                        src="/images/trauma.webp"
+                                         src={traumaImage}
                                         alt="Trauma Recovery"
                                         fill
                                         className="object-cover rounded-lg"
